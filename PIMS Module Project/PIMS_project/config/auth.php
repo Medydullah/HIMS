@@ -41,10 +41,29 @@ return [
             'provider' => 'users',
         ],
 
+        'health_care_provider' => [
+            'driver' => 'session',
+            'provider' => 'health_care_providers',
+        ],
+
+        'health_care_employee' => [
+            'driver' => 'session',
+            'provider' => 'health_care_employees',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'system_admin' => [
+            'driver' => 'session',
+            'provider' => 'system_admins',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
         ],
     ],
 
@@ -69,6 +88,26 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'health_care_providers' => [
+            'driver' => 'eloquent',
+            'model' => App\HealthCareProvider::class,
+        ],
+
+        'health_care_employees' => [
+            'driver' => 'eloquent',
+            'model' => App\HealthCareEmployee::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'system_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\SystemAdmin::class,
         ],
 
         // 'users' => [
@@ -96,22 +135,26 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'expire' => 300,
+        ],
+
+        'health_care_providers' => [
+            'provider' => 'health_care_providers',
+            'table' => 'password_resets',
+            'expire' => 300,
+        ],
+
+        'health_care_employees' => [
+            'provider' => 'health_care_employees',
+            'table' => 'password_resets',
+            'expire' => 300,
+        ],
+
+        'system_admins' => [
+            'provider' => 'system_admins',
+            'table' => 'password_resets',
+            'expire' => 300,
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
-    |
-    */
-
-    'password_timeout' => 10800,
 
 ];
