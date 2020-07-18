@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -29,12 +30,10 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Throwable  $exception
+     * @param  \Exception  $exception
      * @return void
-     *
-     * @throws \Exception
      */
-    public function report(Throwable $exception)
+    public function report(Exception $exception)
     {
         parent::report($exception);
     }
@@ -43,13 +42,34 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
     }
+
+
+    protected function unauthenticated($request, AuthenticationException $exception){
+        $guard = array_get($exception->guards(), 0);
+        switch ($guard) {
+            case 'web': $login = 'user';
+                break;
+            case 'system_admin': $login = 'system.admin.login';
+                break;
+            case 'health_care_provider': $login = 'health_provider.admin.login.form';
+                break;
+            case 'health_care_employee':{
+                    return redirect()->guest(route('health_employee.login',['health_provider_id'=>1]));}
+                break;
+            case 'admin': $login = 'admin.login';
+                break;
+            default: $login = 'login';
+                break;
+        }
+        return redirect()->guest(route($login));
+    }
+
+
 }
