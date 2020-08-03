@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- title {{ config('app.name', 'Laravel') }} -->
-    <title>Admin</title>
+    <title>Pharmacist</title>
 
     <!-- Scripts {{ config('app.name', 'Laravel') }} -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -110,79 +110,219 @@
 
 <div id="app">
 
-  <div class="container-fluid">
-      <div class="row">
 
-          @include('expert.components.left-nav')
+              @include('expert.components.drug_top_nav')
+    <!-- ==================add menu ====================================== -->
+                                @if(  $editMode=='none' )
+                                              <div class="content-wrapper" style="background: #f8fafc;">
+                                                  <div class="list-wrapper">
 
-          <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
+                                                          <div>
+                                                              <div>
+                                                                  <ul class="nav">
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link"
+                                                                             href="#">
+                                                                              <i class="fa fa-ambulance"></i>
+                                                                              Add Drugs
+                                                                              </a>
+                                                                      </li>
 
-              @include('expert.components.top_nav')
-
-              <!-- Content -->
-              <main class="py-4">
-                  <div class="row justify-content-center">
-                      <div class="col-md-12">
-
-                          <div class="card">
-                              <!-- HealthCare provider heading -->
-                              <div class="card-header">
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <h3 style=" ">
-                                              <i class="fa fa-users"> </i>
-                                              Staff
-                                          </h3>
-                                      </div>
-                                  </div>
-                              </div>
-                              
-
-                              <div class="card-body">
-
-                                  <div class="container-fluid" style="background: #ffffff">
-                                      <div class="row justify-content-center">
-
-                                          <div class="col-md-12" >
-
-                                              <!-- STAFF TABS -->
-                                              <div class="tabs-wrapper"  >
-                                                  <ul class="nav nav-tabs nav-justified">
+                                                                  </ul>
+                                                              </div>
+                                           
 
 
-                                                      <li class="nav-item">
-                                                          <!-- <a class="nav-link {{ $activeTab=='receptionists'? 'active' : ' ' }} "
-                                                             href="{{ route('health_provider.employees') }}/receptionists"> -->
-                                                              <i class="fa fa-money-bill"> </i>
-                                                              Receptionist
-                                                          </a>
-                                                      </li>
+<!--  =====================================Drug stock===================================== -->
 
-                                                      <li class="nav-item">
-                                                          <!-- <a class="nav-link {{ $activeTab=='doctors'? 'active' : ' ' }}"
-                                                             href="{{ route('health_provider.employees') }}/doctors"> -->
-                                                              <i class="fa fa-user-md"> </i>
-                                                              Doctors
-                                                          </a>
-                                                      </li>
+                                    <div class="content-wrapper" style="background: #f8fafc;">
+                                        <div class= "list-wrapper">
+
+                                                
+                                                              <table class="table">
+                                                                  <thead>
+                                                                  <tr>
+                                                                      <th>S/N</th>
+                                                                      <th>Stock No</th>
+                                                                      <th>Stock Date</th>
+                                                                      <th>Name</th>
+                                                                      <th>Total Price</th>
+                                                                      <th>Packets No</th>
+                                                                      <th>Tablets No</th>
+                                                                      <th>Expire Date</th>
+                                                                                                                                                                        </tr>
+                                                                  </thead>
+                                                                  <tbody>
 
 
-                                                      <li class="nav-item">
-                                                          <!-- <a class="nav-link {{ $activeTab=='labs'? 'active' : ' ' }} "
-                                                             href="{{ route('health_provider.employees') }}/labs"> -->
-                                                              <i class="fa fa-microscope"> </i>
-                                                              Lab Technicians
-                                                          </a>
-                                                      </li>
 
-                                                      <li class="nav-item">
-                                                          <!-- <a class="nav-link {{ $activeTab=='pharmacists'? 'active' : ' ' }} "
-                                                             href="{{ route('health_provider.employees') }}/pharmacists"> -->
-                                                              <i class="fa fa-pills"> </i>
-                                                              Pharmacists
-                                                          </a>
-                                                      </li>
+                                                                  @foreach( $drugs as $drug )
+                                                                      <tr class="table-success">
+                                                                          <td>{{ $drug->id }}</td>
+                                                                          <td>{{ $drug->name }}</td>
+                                                                          <td>{{ $drug->email }}</td>
+                                                                          <td>{{ $drug->qualification }}</td>
+                                                                          <td>{{ $drug->id }}</td>
+                                                                          <td>{{ $drug->name }}</td>
+                                                                          <td>{{ $drug->email }}</td>
+                                                                          <td>{{ $drug->qualification }}</td>
+                                                                         
+                                                                          </td>
+                                                                          
+                                                                          </tr>
+                                                            @endforeach
 
-                                                  </ul>
-                                              </div>
+                                                            </tbody>
+                                                              </table>
+                                                          </div>
+                                                      @endif
 
+                                                      @if( $editMode=='new_doctor' )
+                                                      <!-- New Employee -->
+                                                          <form method="POST" action="" >
+
+                                                              {{ @csrf_field() }}
+                                                              <input name="active_tab" type="hidden" value="{{ $activeTab }}">
+                                                              <input name="expert_id" type="hidden" value="{{ $selectedDrugs->id }}">
+
+                                                              <div class="card col-md-10 offset-1 new-employee-wrapper">
+
+                                                                  <div>
+                                                                      <h4>
+                                                                           <i class="fa fa-user-plus"> </i>
+                                                                              New Drug
+                                                                          @endif
+
+
+                                                                          <a class="btn btn-sm btn-danger float-right"
+                                                                             href="#">
+                                                                              <i class="fa fa-times-circle"> </i>  Cancel
+                                                                          </a>
+                                                                      </h4>
+                                                                  </div>
+                                                                   <div class="card-body">
+
+                                                                      <!-- New Employee Validation -->
+                                                                      <div>
+                                                                          @if ($errors->any())
+                                                                              <div class="alert alert-danger">
+                                                                                  <ul>
+                                                                                      @foreach ($errors->all() as $error)
+                                                                                          <li>{{ $error }}</li>
+                                                                                      @endforeach
+                                                                                  </ul>
+                                                                              </div>
+                                                                          @endif
+                                                                      </div>
+                  
+
+                                                                      <div class="card-body">
+
+                        <!-- ==================New Drug Validation===================== -->
+                                                                      <div>
+                                            @if ($errors->any())
+                                                         <div class="alert alert-danger">
+                                                         <ul>
+                                                                  @foreach ($errors->all() as $error)
+                                                             <li>{{ $error }}</li>
+                                                                       @endforeach
+                                                                   </ul>
+                                                                          </div>
+                                                                             @endif
+                                                                               </div>
+<!-- ========== =================== Add NEw Drug Form================================== -->
+                                                                         <div class="section-divider" style="margin-top: 1em" >
+                                                                      </div>
+                                                                      <div class="section-heading">
+                                                                          <h5>
+                                                                              <i class="fa fa-user-circle"> </i>
+                                                                            New Drug
+                                                                          </h5>
+                                                                      </div>
+
+                                                                      <!--1.1 Full Name -->
+                                                                      <div class="form-group row">
+                                                                          <label for="name" class="col-md-4 col-form-label text-md-right">Drug Name</label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="name" type="text" class="form-control"
+                                                                                     placeholder=" "
+                                                                                     name="name" value="" required autofocus>
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!--1.2 Email -->
+                                                                      <div class="form-group row">
+                                                                          <label for="email" class="col-md-4 col-form-label text-md-right">Stock No</label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="email" type="text" class="form-control"
+                                                                                     placeholder=""
+                                                                                     name="stock_no" value=""  required autofocus>
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!--1.2 Phone -->
+                                                                      <div class="form-group row">
+                                                                          <label for="phone" class="col-md-4 col-form-label text-md-right">Stock Date</label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="phone" type="text" class="form-control"
+                                                                                     placeholder=" "
+                                                                                     name="phone" value="" required autofocus>
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!--1.3 Employment ID -->
+                                                                      <div class="form-group row">
+                                                                          <label for="employment_id" class="col-md-4 col-form-label text-md-right">
+                                                                              Employment ID N<u>o</u>
+                                                                          </label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="employment_id" type="text" class="form-control"
+                                                                                     placeholder=" "
+                                                                                     name="employment_id" value="" required >
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!--1.4 Qualification -->
+                                                                      <div class="form-group row">
+                                                                          <label for="qualification" class="col-md-4  col-form-label text-md-right">Qualification</label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="qualification" type="text" class="form-control"
+                                                                                     placeholder=", "
+                                                                                     name="qualification" value=""  >
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!--1.5 Specialization -->
+                                                                      <div class="form-group row">
+                                                                          <label for="specialization" class="col-md-4 col-form-label text-md-right">
+                                                                              Specialization
+                                                                          </label>
+
+                                                                          <div class="col-md-8">
+                                                                              <input id="specialization" type="text" class="form-control"
+                                                                                     placeholder=""
+                                                                                     name="specialization" value="" >
+                                                                          </div>
+                                                                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+                                                                          
