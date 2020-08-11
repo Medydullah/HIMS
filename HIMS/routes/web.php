@@ -97,12 +97,6 @@ Route::get('/user/info/journal', 'UserController@showMedicalJournal')->name('use
 
 
 
-
-
-
-
-
-
 //-----------------------------------------------------------------------------------------------------------------------
 //------------------------- 2.0 Experts Auth --------------------------------------------------------------------------
 Route::get('/expert/index', 'HealthExpertController@index')->name('health_employee');
@@ -187,7 +181,7 @@ Route::post('/expert/patient/consultation/final_diagnosis/save', 'HealthExpertCo
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------- 2.4 (Hospital) Other HIMS functions  ------------------------------------------------------------
+//------------------------- 2.4 (Hospital) Other HIMS functions -------------------------------------------------------
 #Personal Details
 Route::get('/expert/user/details/personal/{visit_id?}', 'HealthExpertController@showUserPersonalDetails')->name('expert.user.details.personal');
 
@@ -198,13 +192,7 @@ Route::get('/expert/user/trend/{vs_id?}/{viewMode?}', 'HealthExpertController@sh
 Route::get('/expert/user/journal/{visit_id?}', 'HealthExpertController@showJournalRecords')->name('expert.user.medical.journal');
 Route::get('/expert/user/journal/record/{visit_id?}/{record_id?}', 'HealthExpertController@showJournalRecordDetails')->name('expert.user.medical.journal.record');
 
-//------------------------- 2.4 [[End]] (Hospital) Other HIMS functions  ------------------------------------------------------------
-
-
-
-
-
-
+//------------------------- 2.4 [[End]] (Hospital) Other HIMS functions ----------------------------------------------
 
 
 
@@ -253,24 +241,14 @@ Route::get('/health_provider/admin/service_forms/details/{visit_id?}', 'HealthCa
 Route::get('/health_provider/admin/service_forms/close/{visit_id?}', 'HealthCareProviderController@closeServiceForm')->name('health_provider.admin.service_form.close');
 Route::get('/health_provider/admin/service_forms/download/{visit_id?}', 'HealthCareProviderController@downloadServiceForm')->name('health_provider.admin.service_forms.download');
 
+
+
+//----------------------------Generate Report-------------------------------------------
+
+Route::get('admin/generate/report', 'HealthCareProviderController@generatereport')->name('health_provider.staff.generate');
+
+
 #-------------------------- [[end]] HealthCareProvider Admin-------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -301,41 +279,29 @@ Route::get('/system/test', 'SystemAdminController@testMail')->name('system.admin
 //=================================PHARMACIST============================================
 //=======================================================================================
 Route::get('/', 'HealthExpertController@searchUserByToken');
-Route::get('expert/pharmacy/{active_tab?}', 'HealthExpertController@showDrug')->name('hce.pharmacy');
+Route::get('expert/pharmacy/drug', 'HealthExpertController@showDrug')->name('hce.pharmacy');
 
-Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugRequest')->name('hce.pharmacy');
+Route::get('expert/pharmacy/drug/request', 'HealthExpertController@showDrugRequest')->name('hce.pharmacy.request');
 
-// Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugTable')->name('hce.pharmacy');
+Route::get('expert/pharmacy/add/drug', 'HealthExpertController@addDrugForm')->name('hce.pharmacy.add.drug.form');
+Route::post('expert/pharmacy/drug/save', 'HealthExpertController@addNewDrug')->name('hce.pharmacy.drug.save');
 
-// Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy');
+Route::get('expert/pharmacy/drug/table', 'HealthExpertController@showDrugTable')->name('hce.pharmacy.table');
+
+Route::get('expert/pharmacy/drug/notification', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy.notification');
 
 Route::get('expert/stock/{active_tab?}', 'HealthExpertController@showIncome')->name('hce.income');
 
+
+// Create file upload form
+Route::get('pharmacist/upload/report', 'HealthExpertController@createForm')->name('pharmacist.upload.file');
+
+// Store file
+Route::post('pharmacist/upload/report', 'HealthExpertController@fileUpload')->name('pharmacist.upload.file');
+
+//===================================pdf=====================================
+Route::get('notes', 'NotesController@index');
+ Route::get('pdf', 'NotesController@pdf');
+
 // Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy.notification');
 // Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugTable')->name('hce.pharmacy.table');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

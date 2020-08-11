@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\drugs;
 use App\Incomes;
-
+use App\File;
 
 class HealthExpertController extends Controller
 {
@@ -78,10 +78,45 @@ class HealthExpertController extends Controller
 
     //---------------[[ Provider Drugs Detail]]--------------------
 
+    public function addDrugForm() {
+        return view('expert.addDrugForm')->with(
+            [
+                'activeLeftNav'=>'wallets',
+                'editMode'=>'none',
+                'accessToken'=>" ",
+                'activeTab'=>'activeTab',
+                'activeTab'=>'drugs',
+            ]);
+    }
+public function AddNewDrug(){
+ $drugs = new Drug();
+ $drugs->employee_id=$request->input('employee_id');
+ $drugs->stock_no=$request->input('stock_no');
+ $drugs->stock_date=$request->input('stock_date');
+ $drugs->packet_no=$request->input('packet_no');
+ $drugs->box_no=$request->input('box_no');
+ $drugs->tablet_no=$request->input('total_drug');
+ $drugs->expire_date=$request->input('expire_date');
+ $drugs->employee_name=$request->input('employee_name');
+ $drugs->drug_id=$request->input('drug_id');
+ $drugs->drug_name=$request->input('drug_name');
+ $drugs->price=$request->input('price');
+ 
+ $drugs->save();
 
-    public function showDrug($active_tab)
+return redirect('expert.addDrugForm')->with(
+            [
+                'activeLeftNav'=>'wallets',
+                'editMode'=>'none',
+                'accessToken'=>" ",
+                'activeTab'=>'activeTab',
+                'activeTab'=>'drugs',
+            ]);
+
+}
+    public function showDrug()
     {
-        $drugs = Drug::select('select * from drugs grouped by drug_name');
+        $drugs = Drug::all();
         return view('expert.0_drug',['drugs'=>$drugs])->with(
             [
                 'activeLeftNav'=>'wallets',
@@ -107,7 +142,7 @@ class HealthExpertController extends Controller
                 'activeTab'=>'income',
             ]);
     }  
-    public function showDrugRequest($active_tab)
+    public function showDrugRequest()
     {
         return view('expert.0_drug_request')->with(
             [
@@ -121,7 +156,7 @@ class HealthExpertController extends Controller
             ]);
     }  
  
-    public function showDrugNotification($active_tab)
+    public function showDrugNotification()
     {
         return view('expert.0_drug_notification')->with(
             [
@@ -131,7 +166,7 @@ class HealthExpertController extends Controller
                 'activeTab'=>'drugs'
             
             ]);
-    }    public function showDrugTable($active_tab)
+    }    public function showDrugTable()
     {
         return view('expert.0_drug_table')->with(
             [
@@ -143,6 +178,39 @@ class HealthExpertController extends Controller
             ]);
     }  
    
+/////=============================================upload file================///////////////////////
+public function createForm(){
+    return view('expert.file-upload')->with(
+        [
+            'activeLeftNav'=>'wallets',
+         
+            'activeTab'=>'activeTab',
+            'activeTab'=>'table'
+        
+        ]);
+  }
+
+  public function fileUpload(Request $req){
+        $req->validate([
+        'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:5048'
+        ]);
+
+        $fileModel = new File;
+
+        if($req->file()) {
+            $fileName = time().'_'.$req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+
+            $fileModel->name = time().'_'.$req->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+
+            return back()
+            ->with('success','File has been uploaded succesfully.')
+            ->with('file', $fileName);
+        }
+   }
+
 
     //---------------------------------------------------------------------------------------------
     //-------------------------0.0 Medical Data Searches-------------------------------------------------
