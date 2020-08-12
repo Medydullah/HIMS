@@ -24,7 +24,7 @@
     <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
 
     <style>
-    
+
     .permission-group{
             border-left: 6px Solid #ddd690;
             padding-top: 0.5em;
@@ -201,19 +201,22 @@
                                                                 <div>
                                                                     <ul class="nav">
                                                                         <li class="nav-item">
-                                                                       
+
                                                                         <a class="nav-link"
                                                                                 href="{{ route('health_provider.employee.add.form') }}/{{ $activeTab }}">
                                                                                 <i class="fa fa-user-plus"></i>
                                                                                 Add {{ $profession }}
                                                                             </a>
-                                                                            
+
                                                                         </li>
-                                                                       
-          
+
+
                                                                     </ul>
                                                                 </div>
                                                                 <table class="table">
+                                                                    <div style="float:right">
+                                                                        <a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success mb-2" >Export PDF</a>
+                                                                        </div>
                                                                     <thead>
                                                                         <tr>
                                                                             <th>S/N</th>
@@ -229,9 +232,7 @@
                                                                         @foreach( $healthCareEmployees as
                                                                         $healthCareEmployee )
                                                                         <tr class="table-success">
-                                                                             <div style="float:right">
-                                                                        <a href="{{ url('pdf') }}" class="btn btn-success mb-2" >Export PDF</a>
-                                                                        </div>
+
                                                                             <td>{{ $healthCareEmployee->id }}</td>
                                                                             <td>{{ $healthCareEmployee->name }}</td>
                                                                             <td>{{ $healthCareEmployee->email }}</td>

@@ -13,7 +13,7 @@
           <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
               @include('expert.components.top_nav')
-
+              <div class="container">
               <!-- Content -->
               <main class="py-4">
                   <div class="row justify-content-center">
@@ -31,7 +31,7 @@
                                       </div>
                                   </div>
                               </div>
-                              
+
 <!-- ===================================================Drug Top Nav Menu -->
                               <div class="card-body">
 
@@ -51,7 +51,7 @@
                                                               <i class="fa fa-store"> </i>
                                                               Sold Income
                                                           </a>
-                                                          
+
                                                       </li>
 
                                                       <li class="nav-item">
@@ -84,7 +84,7 @@
                                                   <div class="content-wrapper" style="background: #f8fafc;">
                                                   <div class="list-wrapper">
 
-                                                  
+
                                                                           </a>
                                                                       </li>
 

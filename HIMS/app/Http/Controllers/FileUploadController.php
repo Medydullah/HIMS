@@ -13,16 +13,16 @@ public function createForm(){
   return view('expert.file-upload')->with(
       [
           'activeLeftNav'=>'wallets',
-       
+
           'activeTab'=>'activeTab',
           'activeTab'=>'table'
-      
+
       ]);
 }
 
 public function fileUpload(Request $req){
       $req->validate([
-      'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:2048'
+      'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:10048'
       ]);
 
       $fileModel = new File;

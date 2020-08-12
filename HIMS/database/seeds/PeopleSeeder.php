@@ -23,19 +23,19 @@ class PeopleSeeder extends Seeder
 //
 //       $user->name = "Braylon Armando";
 //       $user->gender = "Male";
-//       $user->dob = "1972-01-31";
+//       $user->dob = "19-01-31";
 //
 //       $user->password = Hash::make("zxcvbnm");
 //       $user->save();
 
         $user = new User();
-        $user->email = "adrian@gmail.com";
-        $user->phone = "0738862068";
-        $user->dmw_token= "U2019-003-TGA6";
+        $user->email = "medy@gmail.com";
+        $user->phone = "0686100150p";
+        $user->dmw_token= "M2020-003-TGA6";
 
-        $user->name = "Adrian Bentekhe";
+        $user->name = "Mohamed A Nassoro";
         $user->gender = "Male";
-        $user->dob = "1989-05-5";
+        $user->dob = "1996-01-12";
 
         $user->password = Hash::make("zxcvbnm");
         $user->save();

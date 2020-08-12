@@ -1,28 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Note;
+use App\Notes;
 use Illuminate\Http\Request;
 
 class NotesController extends Controller
 {
 
-    public function index()
+    public function ()
     {
-        $data['notes'] = Note::paginate(10);
-   
+        $data['notes'] = Notes::paginate(10);
+
         return view('list',$data);
     }
- 
+
     public function pdf(){
-      
+
      $data['title'] = 'Notes List';
-     $data['notes'] =  Note::get();
- 
+     $data['notes'] =  Notes::get();
+
      $pdf = PDF::loadView('notes.list_notes', $data);
-   
+
      return $pdf->download('tuts_notes.pdf');
     }
-    
+
     //
 }

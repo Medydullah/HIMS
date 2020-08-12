@@ -53,10 +53,10 @@ class HealthExpertController extends Controller
         case 'receptionist':{
             return redirect()->route('hce.opd',[
                 'active_tab'=>'insurance',
-               
+
             ]);
         }break;
-        
+
         // case 'pharmacist':{
         //     return redirect()->route('hce.opd',[
         //         'active_tab'=>'drugs'
@@ -71,7 +71,7 @@ class HealthExpertController extends Controller
         }
     }
 
-   
+
 //-----------------------------------------------------------------------------------------------------
 //----------------------------      drugs    ----------------------------------------------------------
 
@@ -101,7 +101,7 @@ public function AddNewDrug(Request $request){
  $drugs->drug_id=$request->input('drug_id');
  $drugs->drug_name=$request->input('drug_name');
  $drugs->price=$request->input('price');
- 
+
  $drugs->save();
 
 return redirect('/expert/pharmacy/drug')->with(
@@ -127,7 +127,7 @@ return redirect('/expert/pharmacy/drug')->with(
                 'activeTab'=>'drugs',
                 'activeTab'=>'incomes',
             ]);
-    }  
+    }
 
     public function showIncome($active_tab)
     {
@@ -141,7 +141,7 @@ return redirect('/expert/pharmacy/drug')->with(
                 'activeTab'=>'drugs',
                 'activeTab'=>'income',
             ]);
-    }  
+    }
     public function showDrugRequest()
     {
         return view('expert.0_drug_request')->with(
@@ -152,10 +152,10 @@ return redirect('/expert/pharmacy/drug')->with(
                 'accessToken'=>" ",
                 'activeTab'=>'activeTab',
                 'activeTab'=>'drugs'
-            
+
             ]);
-    }  
- 
+    }
+
     public function showDrugNotification()
     {
         return view('expert.0_drug_notification')->with(
@@ -164,29 +164,32 @@ return redirect('/expert/pharmacy/drug')->with(
                 // 'activeWalletTab'=>'visit',
                'activeTab'=>'activeTab',
                 'activeTab'=>'drugs'
-            
+
             ]);
-    }    public function showDrugTable()
+
+    }
+
+    public function showDrugTable()
     {
         return view('expert.0_drug_table')->with(
             [
                 'activeLeftNav'=>'wallets',
-             
+
                 'activeTab'=>'activeTab',
                 'activeTab'=>'table'
-            
+
             ]);
-    }  
-   
+    }
+
 /////=============================================upload file================///////////////////////
 public function createForm(){
     return view('expert.file-upload')->with(
         [
             'activeLeftNav'=>'wallets',
-         
+
             'activeTab'=>'activeTab',
             'activeTab'=>'table'
-        
+
         ]);
   }
 
@@ -225,7 +228,7 @@ public function searchUserByToken(){
     }
 
 
-    
+
     public function submitSearchQuery(Request $request){
 
         #check if Form is active

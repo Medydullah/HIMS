@@ -2,6 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +125,7 @@
 
 
                         <div class="container">
-  
+
                                         <div class="card" style="margin:5px;">
                                             <!-- HealthCare provider heading -->
                                             <div class="card-header">
@@ -146,7 +151,7 @@
 
                                                     <div class="custom-file">
                                                         <input type="file" name="file" class="custom-file-input"
-                                                            id="chooseFile">
+                                                            id="chooseFile" >
                                                         <label class="custom-file-label" for="chooseFile">Select
                                                             file</label>
                                                     </div>
@@ -162,11 +167,10 @@
                                 </div>
                             </main>
                         </div>
-
                         <footer id="footer" class="bg-dark"
-                            style="width:100%; float:right; margin-top:400px; color:white">
+                            style="width:100%; float:right;color:white; margin-top:80px;">
                             <div class="py-2 text-center">
-                                <p> &copyright Udsm <span id="year"></span>
+                                <p> &copyright HIMS <span id="year"></span>
                                     <script>
                                     document.write(new Date().getFullYear());
                                     </script>, All rights reserved
@@ -176,16 +180,11 @@
                     </div>
                 </div>
 
-                <script>
-                // Add the following code if you want the name of the file appear on select
-                $(".custom-file-input").on("change", function() {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).siblings(".custom-file-label").addClass("selected")
-                        .html(
-                            fileName);
-                });
+                <script type="application/javascript">
+                    $('input[type="file"]').change(function(e){
+                        var fileName = e.target.files[0].name;
+                        $('.custom-file-label').html(fileName);
+                    });
                 </script>
-
-    </body>
 
 </html>

@@ -300,8 +300,4 @@ Route::get('pharmacist/upload/report', 'HealthExpertController@createForm')->nam
 Route::post('pharmacist/upload/report', 'HealthExpertController@fileUpload')->name('pharmacist.upload.file');
 
 //===================================pdf=====================================
-Route::get('notes', 'NotesController@index');
- Route::get('pdf', 'NotesController@pdf');
-
-// Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy.notification');
-// Route::get('expert/pharmacy/drug/{active_tab?}', 'HealthExpertController@showDrugTable')->name('hce.pharmacy.table');
+Route::get('pdfview',array('as'=>'pdfview','uses'=>'HealthCareProviderController@pdfview'));

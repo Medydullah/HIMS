@@ -28,7 +28,7 @@ class SystemAdminSeeder extends Seeder{
 
         $user = new \App\SystemAdmin();
         $user->email = "superuser@dmw.com";
-        $user->name = "Richard J U Kilonzo";
+        $user->name = "Mohamed A Nassoro";
         $user->password = Hash::make("zxcvbnm");
         $user->save();
     }

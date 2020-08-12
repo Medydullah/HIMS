@@ -40,7 +40,7 @@ class HealthCareProviderController extends Controller
         ]);
     }
 
-    
+
     //---------------[[ Provider Profile]]--------------------
     public function showProfile( ){
         $healthCareProvider= HealthCareProvider::find(Auth::id());
@@ -67,7 +67,20 @@ public function generatereport(){
      ]);
 }
 
+public function pdfview(Request $request)
+{
+    $staffs = DB::table("health_care_employees")->get();
+    view()->share('staffs',$staffs);
 
+
+    if($request->has('download')){
+        $pdf = PDF::loadView('pdfview');
+        return $pdf->download('pdfview.pdf');
+    }
+
+
+    return view('health_provider.pdfview');
+}
     //---------------[[Staff |Employees | Experts]]--------------------
     public function showEmployees($active_tab ){
 
@@ -84,7 +97,7 @@ public function generatereport(){
             'profession'=>$this->getProfession($active_tab)->sentenceCase,
         ]);
     }
-    
+
 
     public function showAddEmployeeForm($active_tab){
         return view('health_provider.staff',[
