@@ -88,23 +88,23 @@ class HealthExpertController extends Controller
                 'activeTab'=>'drugs',
             ]);
     }
-public function AddNewDrug(){
+public function AddNewDrug(Request $request){
  $drugs = new Drug();
- $drugs->employee_id=$request->input('employee_id');
+ $drugs->employment_id=$request->input('employee_id');
  $drugs->stock_no=$request->input('stock_no');
  $drugs->stock_date=$request->input('stock_date');
  $drugs->packet_no=$request->input('packet_no');
  $drugs->box_no=$request->input('box_no');
- $drugs->tablet_no=$request->input('total_drug');
+ $drugs->total_drug=$request->input('tablet_no');
  $drugs->expire_date=$request->input('expire_date');
- $drugs->employee_name=$request->input('employee_name');
+ $drugs->employment_name=$request->input('employee_name');
  $drugs->drug_id=$request->input('drug_id');
  $drugs->drug_name=$request->input('drug_name');
  $drugs->price=$request->input('price');
  
  $drugs->save();
 
-return redirect('expert.addDrugForm')->with(
+return redirect('/expert/pharmacy/drug')->with(
             [
                 'activeLeftNav'=>'wallets',
                 'editMode'=>'none',

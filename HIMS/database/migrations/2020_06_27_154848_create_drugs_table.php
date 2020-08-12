@@ -20,14 +20,14 @@ class CreateDrugsTable extends Migration
             $table->string('price')->nullable();
              $table->date('expire_date')->nullable();
             $table->string('box_no')->nullable();
-            $table->date('packet_no')->nullable(); //date
-            $table->date('tablets_no')->nullable();  //date
+            $table->integer('packet_no')->nullable(); //date
+            $table->integer('tablets_no')->nullable();  //date
             $table->string('employment_id')->nullable();
             $table->string('employment_name')->nullable();
             $table->timestamps();
-            $table->date('total_drug')->nullable();  //date
+            $table->integer('total_drug')->nullable();  //date
             $table->string('stock_no')->nullable();
-            $table->string('stock_date')->nullable();
+            $table->date('stock_date')->nullable();
          });
     }
 

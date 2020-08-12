@@ -144,14 +144,14 @@
 
                 @foreach( $drugs as $drug )
                 <tr class="table-success">
-                    <td>{{ $drug->id }}</td>
-                    <td>{{ $drug->name }}</td>
-                    <td>{{ $drug->email }}</td>
-                    <td>{{ $drug->qualification }}</td>
-                    <td>{{ $drug->id }}</td>
-                    <td>{{ $drug->name }}</td>
-                    <td>{{ $drug->email }}</td>
-                    <td>{{ $drug->qualification }}</td>
+                <td>{{ $drug->id }}</td> 
+                    <td>{{ $drug->stock_no }}</td>
+                    <td>{{ $drug->stock_date }}</td>
+                    <td>{{ $drug-> drug_id}}</td>
+                    <td>{{ $drug->drug_name }}</td>
+                    <td>{{ $drug->price}}</td>
+                    <td>{{ $drug->packet_no }}</td>
+                    <td>{{ $drug->expire_date}}</td>
 
                     </td>
 

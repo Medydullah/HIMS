@@ -118,7 +118,7 @@
 
         <!-- New Employee -->
         <form method="post" action="{{route('hce.pharmacy.drug.save')}}">
-
+         @csrf
 
             <input name="active_tab" type="hidden" value="">
             <input name="expert_id" type="hidden" value="">

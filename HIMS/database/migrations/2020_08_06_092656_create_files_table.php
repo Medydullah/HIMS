@@ -20,10 +20,7 @@ class CreateFilesTable extends Migration
                 $table->timestamps();
 
 
-                $table->foreign('email')
-                ->references('id')
-                ->on('health_care_employees')
-                ->onDelete('cascade');
+                $table->string('email')->nullable();
        
         });
     }
