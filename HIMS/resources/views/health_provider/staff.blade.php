@@ -120,7 +120,7 @@
                 <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
                     @include('health_provider.components.top_nav')
-
+<div class="container">
                     <!-- Content -->
                     <main class="py-4">
                         <div class="row justify-content-center">

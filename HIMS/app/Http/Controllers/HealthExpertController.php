@@ -624,8 +624,31 @@ public function searchUserByToken(){
                 ]
             );
         }
+    }
+//=============================generate df report=======================================
 
 
+public function pdfview(Request $request )
+{
+
+    $staffs = DB::table("drugs")->get();
+    view()->share('staffs',$staffs);
+
+
+    if($request->has('download')){
+        $pdf = PDF::loadView('EXPERT.pdfview',[
+
+            'view_mode'=>'none',
+            'activeLeftNav'=>"staff",
+
+            'editMode'=>"none",
+            ]);
+        return $pdf->download('pdfview.pdf');
+    }
+
+}
+
+    //---------------------------------------------------ENG PDF GENERATE------------------------
 
         //store uploaded file
         $file_name = "lab_file_" . time().".pdf";

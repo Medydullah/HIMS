@@ -67,14 +67,21 @@ public function generatereport(){
      ]);
 }
 
-public function pdfview(Request $request)
+public function pdfview(Request $request )
 {
+
     $staffs = DB::table("health_care_employees")->get();
     view()->share('staffs',$staffs);
 
 
     if($request->has('download')){
-        $pdf = PDF::loadView('pdfview');
+        $pdf = PDF::loadView('health_provider.pdfview',[
+
+            'view_mode'=>'none',
+            'activeLeftNav'=>"staff",
+
+            'editMode'=>"none",
+            ]);
         return $pdf->download('pdfview.pdf');
     }
 

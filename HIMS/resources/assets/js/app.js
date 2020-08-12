@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+require('jsPDF')
+
 window.Vue = require('vue');
 
 /**
