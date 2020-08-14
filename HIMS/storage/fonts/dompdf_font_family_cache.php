@@ -81,9 +81,10 @@
     'normal' => $fontDir . '\6a4b887edaa8db0343336cc1c1c45a7b',
   ),
   'font awesome 5 brands' => array(
-    'normal' => $fontDir . '\6a0947830f878760cfb9dcd7673cfa8b',
+    'normal' => $fontDir . '/font-awesome-5-brands-normal_fab93b9b6f5e776ab4858734e3ac4a81',
   ),
   'font awesome 5 free' => array(
-    'normal' => $fontDir . '\f47c86bd1ea1e20b56489bf70207f34d',
+    'normal' => $fontDir . '/font-awesome-5-free-normal_0df48081a802e0609fe29acf781bb888',
+    '900' => $fontDir . '/font-awesome-5-free-900_0d9e185da16b62acf186db096d625b70',
   ),
 ) ?>

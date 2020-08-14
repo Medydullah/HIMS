@@ -127,6 +127,9 @@
 
         <table class="table">
             <thead>
+                <div style="float:right">
+                    <a href="{{ route('drug_pdf',['download'=>'pdf']) }}" class="btn btn-success mb-2" >Export PDF</a>
+                    </div>
                 <tr>
                     <th>S/N</th>
                     <th>Stock No</th>
@@ -144,10 +147,10 @@
 
                 @foreach( $drugs as $drug )
                 <tr class="table-success">
-                <td>{{ $drug->id }}</td> 
+                <td>{{ $drug->id }}</td>
                     <td>{{ $drug->stock_no }}</td>
                     <td>{{ $drug->stock_date }}</td>
-                    <td>{{ $drug-> drug_id}}</td>
+                    <td>{{ $drug->drug_id}}</td>
                     <td>{{ $drug->drug_name }}</td>
                     <td>{{ $drug->price}}</td>
                     <td>{{ $drug->packet_no }}</td>

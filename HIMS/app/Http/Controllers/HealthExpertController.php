@@ -23,6 +23,8 @@ use App\Visit;
 use App\VitalSign;
 use App\VitalSignValue;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -52,16 +54,9 @@ class HealthExpertController extends Controller
 
         case 'receptionist':{
             return redirect()->route('hce.opd',[
-                'active_tab'=>'insurance',
-
+                'active_tab'=>'insurance'
             ]);
         }break;
-
-        // case 'pharmacist':{
-        //     return redirect()->route('hce.opd',[
-        //         'active_tab'=>'drugs'
-        //     ]);
-        // }break;
 
          default :{
         return redirect()->route('hce.patient.wallet.search');
@@ -70,6 +65,13 @@ class HealthExpertController extends Controller
 
         }
     }
+
+
+//====================================================pharmacist last 2 menu==============================
+
+
+
+
 
 
 //-----------------------------------------------------------------------------------------------------
@@ -114,6 +116,37 @@ return redirect('/expert/pharmacy/drug')->with(
             ]);
 
 }
+
+//=======================================GENERATE PDF RESULT=================================================
+
+
+
+public function drugpdfview(Request $request )
+{
+
+    $drugs = DB::table("drugs")->get();
+    view()->share('drugs',$drugs);
+
+
+    if($request->has('download')){
+        $pdf = PDF::loadView('expert.drug_pdf',[
+
+            'view_mode'=>'none',
+            'activeLeftNav'=>"staff",
+
+            'editMode'=>"none",
+            ]);
+        return $pdf->download('drugpdf.pdf');
+    }
+
+
+    return view('expert.drug_pdf');
+}
+
+
+
+
+//==============================================END REPORT PDF==================================
     public function showDrug()
     {
         $drugs = Drug::all();
@@ -215,9 +248,13 @@ public function createForm(){
    }
 
 
+   #=============================================end pharmacist last 2 menu=====================================
+
+
+
     //---------------------------------------------------------------------------------------------
-    //-------------------------0.0 Medical Data Searches-------------------------------------------------
-public function searchUserByToken(){
+    //-------------------------0.0 Wallet Searches-------------------------------------------------
+    public function searchUserByToken(){
         return view('expert.1_search_form')->with(
             [
                 'activeLeftNav'=>'wallets',
@@ -226,8 +263,6 @@ public function searchUserByToken(){
                 'accessToken'=>" ",
             ]);
     }
-
-
 
     public function submitSearchQuery(Request $request){
 
@@ -624,31 +659,8 @@ public function searchUserByToken(){
                 ]
             );
         }
-    }
-//=============================generate df report=======================================
 
 
-public function pdfview(Request $request )
-{
-
-    $staffs = DB::table("drugs")->get();
-    view()->share('staffs',$staffs);
-
-
-    if($request->has('download')){
-        $pdf = PDF::loadView('EXPERT.pdfview',[
-
-            'view_mode'=>'none',
-            'activeLeftNav'=>"staff",
-
-            'editMode'=>"none",
-            ]);
-        return $pdf->download('pdfview.pdf');
-    }
-
-}
-
-    //---------------------------------------------------ENG PDF GENERATE------------------------
 
         //store uploaded file
         $file_name = "lab_file_" . time().".pdf";

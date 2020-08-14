@@ -243,10 +243,6 @@ Route::get('/health_provider/admin/service_forms/download/{visit_id?}', 'HealthC
 
 
 
-//----------------------------Generate Report-------------------------------------------
-
-Route::get('admin/generate/report', 'HealthCareProviderController@generatereport')->name('health_provider.staff.generate');
-
 
 #-------------------------- [[end]] HealthCareProvider Admin-------------------------------------------------------------------
 
@@ -278,7 +274,7 @@ Route::get('/system/test', 'SystemAdminController@testMail')->name('system.admin
 
 //=================================PHARMACIST============================================
 //=======================================================================================
-Route::get('/', 'HealthExpertController@searchUserByToken');
+// Route::get('/', 'HealthExpertController@searchUserByToken');
 Route::get('expert/pharmacy/drug', 'HealthExpertController@showDrug')->name('hce.pharmacy');
 
 Route::get('expert/pharmacy/drug/request', 'HealthExpertController@showDrugRequest')->name('hce.pharmacy.request');
@@ -301,3 +297,11 @@ Route::post('pharmacist/upload/report', 'HealthExpertController@fileUpload')->na
 
 //===================================pdf=====================================
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'HealthCareProviderController@pdfview'));
+Route::get('drug/pdf',array('as'=>'drug_pdf','uses'=>'HealthExpertController@drugpdfview'));
+Route::get('drug/pdf',array('as'=>'drug_pdf','uses'=>'HealthCareProviderController@drugpdfview'));
+//====================================staff uploaded file in admin===================================
+Route::get('health/provider/uploaded/report', 'HealthCareProviderController@showuploadedReport')->name('health_provider.staff.upload.report');
+
+//----------------------------admin Generate Report-------------------------------------------
+
+Route::get('admin/generate/report', 'HealthCareProviderController@generatereport')->name('health_provider.staff.generate');

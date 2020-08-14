@@ -24,7 +24,7 @@
     <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
 
     <style>
-    
+
     .permission-group{
             border-left: 6px Solid #ddd690;
             padding-top: 0.5em;
@@ -124,21 +124,20 @@
                     <main class="py-4">
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-
                                 <div class="card">
-                                    <!--Drug heading -->
+                                    <!-- HealthCare provider heading -->
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h3 style=" ">
                                                     <i class="fa fa-download"> </i>
-                                                    Generate Report
+                                                    Generate Reports
                                                 </h3>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- ===================================================Drug Top Nav Menu -->
+
                                     <div class="card-body">
 
                                         <div class="container-fluid" style="background: #ffffff">
@@ -147,25 +146,17 @@
                                                 <div class="col-md-12">
 
 
-                            <table class="table table-bordered">
-    <thead>
-      <tr>
-        <td><b>Company Name</b></td>
-        <td><b>Department Name</b></td>
-        <td><b>Team Lead name</b></td>     
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          
-        </td>
-        <td>
-      
-        </td>
-        <td>
-      
-        </td>
-      </tr>
-      </tbody>
-                            </table>
+
+                                  <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <button><li><a href="{{ route('drug_pdf',['download'=>'pdf']) }}">Drug List</a></li></button>
+                                      <li><a href="#"></a></li>
+                                      <li><a href="#">JavaScript</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+
+                                </body>
+                                </html>

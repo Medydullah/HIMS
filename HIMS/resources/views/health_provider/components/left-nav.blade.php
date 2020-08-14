@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="nav-item   list-unstyled ">
-            <a class="nav-link left-menu-link {{ $activeLeftNav == 'uploaded'? 'active-left-menu' : ' ' }}" href="#">
+        <a class="nav-link left-menu-link {{ $activeLeftNav == 'uploaded'? 'active-left-menu' : ' ' }}" href="{{route('health_provider.staff.upload.report')}}">
                 <i class="fa fa-users"></i>
                 Uploaded Report</a>
         </li>

@@ -4,7 +4,7 @@
     <div style="padding: 1em; margin-top: 2em">
         <h2 class="logo-text">
             <i class="fa fa-wallet"> </i>
-            <b>HIMS USER</b>
+            <b>PATIENT</b>
         </h2>
     </div>
 

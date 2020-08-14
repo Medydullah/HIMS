@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\File;
 
 class HealthCareProviderController extends Controller
 {
@@ -66,7 +67,7 @@ public function generatereport(){
         'editMode'=>"none",
      ]);
 }
-
+//===========================================get staff report==========================================
 public function pdfview(Request $request )
 {
 
@@ -88,6 +89,50 @@ public function pdfview(Request $request )
 
     return view('health_provider.pdfview');
 }
+
+
+
+public function drugpdfview(Request $request )
+{
+
+    $drugs = DB::table("drugs")->get();
+    view()->share('drugs',$drugs);
+
+
+    if($request->has('download')){
+        $pdf = PDF::loadView('expert.drug_pdf',[
+
+            'view_mode'=>'none',
+            'activeLeftNav'=>"staff",
+
+            'editMode'=>"none",
+            ]);
+        return $pdf->download('drugpdf.pdf');
+    }
+
+
+    return view('expert.drug_pdf');
+}
+
+//==============================================end pdf======================================
+
+
+//=======================================get uploded Report=====================================
+
+public function showUploadedReport()
+{
+    $files = File::all();
+
+    return view('health_provider.uploaded_report',['files'=>$files])->with(
+        [
+            'activeLeftNav'=>"service-forms",
+            'editMode'=>"none",
+        ]);
+}
+
+
+//============================================end get uploded report===================================
+
     //---------------[[Staff |Employees | Experts]]--------------------
     public function showEmployees($active_tab ){
 

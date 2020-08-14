@@ -124,7 +124,7 @@
         }
 
 
-     
+
         .permission-group{
             border-left: 6px Solid #ddd690;
             padding-top: 0.5em;
@@ -213,7 +213,7 @@
 
               @include('expert.components.drug_top_nav')
               <div class="dashed-form">
-             
+
                                                                  <!-- form heading -->
                                                                 <h4>
                                                                    <span class="section-heading">
@@ -282,7 +282,7 @@
                                                                            value=""
                                                                            name="date">
                                                                     </div>
-                                                                </div
+                                                                </div>
                                                                       <!--1.6 Tribe -->
                                                                       <div class="row form-input-row">
                                                                     <label for="tribe" class="col-md-4 form-label">Drug Category</label>

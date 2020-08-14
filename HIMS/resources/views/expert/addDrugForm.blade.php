@@ -124,7 +124,7 @@
             <input name="expert_id" type="hidden" value="">
 
             <div class="card col-md-10 offset-1 new-employee-wrapper">
-                
+
                 <div>
                     <h4>
                         <i class="fa fa-user-plus"> </i>
@@ -164,7 +164,7 @@
                     <label for="employment name" class="col-md-4 col-form-label text-md-right">
                         Employment Name
                     </label>
-                    
+
                     <div class="col-md-8">
                         <input id="employment_name" type="text" class="form-control" placeholder=" " name="employment_name"
                             value="" required>
@@ -206,13 +206,14 @@
                             autofocus>
                     </div>
                 </div>
+
                 <div class="form-group row" >
                     <label for="expire date" class="col-md-4 col-form-label text-md-right">
                        Expire Date
                     </label>
 
                     <div class="col-md-8">
-                        <input id="employment_id" type="text" class="form-control" placeholder=" " name="expire_date"
+                        <input id="employment_id" type="date" class="form-control" placeholder=" " name="expire_date"
                             value="" required>
                     </div>
                 </div>
@@ -241,19 +242,19 @@
 
                 <!--1.2 Phone -->
                 <div class="form-group row">
-                    <label for="stock date" class="col-md-4 col-form-label text-md-right">Stock
+                    <label for="stock_date" class="col-md-4 col-form-label text-md-right">Stock
                         Date</label>
 
                     <div class="col-md-8">
-                        <input id="stock_date" type="text" class="form-control" placeholder=" " name="date" value=""
+                        <input id="stock_date" type="date" class="form-control" placeholder=" " name="stock_            ```date" value=""
                             required autofocus>
                     </div>
                 </div>
 
 
-               
+
                 <!--1.3 Employment ID -->
-               
+
 
                 <div class="form-group row">
                     <label for="packet no" class="col-md-4  col-form-label text-md-right">Packet NO</label>
@@ -286,10 +287,10 @@
                     </div>
                 </div>
 
-                
-                <div class="form-group" style="text-align:center; margin-left:400px">
 
-
-                       <button type="submit"  style="width:150px;background-color: blue; color:white;">ADD</button>
-                    </div>
+                <div class="row form-input-row justify-content-center">
+                    <button type="submit" class="btn btn-sm btn-primary col-md-3">
+                        ADD DRUG
+                    </button>
+                 </div>
                 </div>
