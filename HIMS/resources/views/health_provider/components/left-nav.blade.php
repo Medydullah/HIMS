@@ -29,7 +29,7 @@
         </li>
 
         <li class="nav-item  list-unstyled ">
-            <a class="nav-link left-menu-link {{ $activeLeftNav == 'price'? 'active-left-menu' : ' ' }}" href="#">
+            <a class="nav-link left-menu-link {{ $activeLeftNav == 'price'? 'active-left-menu' : ' ' }}" href="{{ route('health_provider.admin.service.price')}}">
                 <i class="fa fa-wallet"></i>
                 Medical & Drug Price
             </a>

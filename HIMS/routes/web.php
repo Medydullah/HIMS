@@ -305,3 +305,8 @@ Route::get('health/provider/uploaded/report', 'HealthCareProviderController@show
 //----------------------------admin Generate Report-------------------------------------------
 
 Route::get('admin/generate/report', 'HealthCareProviderController@generatereport')->name('health_provider.staff.generate');
+
+
+//=====================================medical  and drug price in admin ==============================
+Route::get('health/provider/service/price', 'HealthCareProviderController@ServicePrice')->name('health_provider.admin.service.price');
+Route::get('health/provider/add/service/price', 'HealthCareProviderController@addServicePrice')->name('health_provider.admin.add.service.price');

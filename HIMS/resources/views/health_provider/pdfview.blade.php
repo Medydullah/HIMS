@@ -7,23 +7,22 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <body>
 @if( $editMode=='none' )
-<div>
-    <div>
-        <ul class="nav">
-            <li class="nav-item">
 
-            <a></i>
+<ul class="nav" style="text-align: center;">
 
-                </a>
+        <h3>  HOSPITAL INFORMATION MANAGEMENT SYSTEM <br>(HIMS) </h3>
+            <h4>STAFF LIST REPORT</h4>
+        </a>
+    </li>
 
-            </li>
-
-
-        </ul>
-    </div>
+</ul>
 
 <table class="table">
     <thead>
@@ -51,15 +50,6 @@
 
             @endforeach
     </tbody>
-    <footer id="footer" class="bg-dark"
-    style="width:100%; float:right;color:white; margin-top:80px;">
-    <div class="py-2 text-center">
-        <p> &copyright HIMS <span id="year"></span>
-            <script>
-            document.write(new Date().getFullYear());
-            </script>, All rights reserved
-        </p>
-    </div>
-</footer>
+
 </table>
 @endif

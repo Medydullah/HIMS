@@ -160,7 +160,7 @@
                 <tr class="table-success">
                 <td>{{ $file->id }}</td>
                     <td>{{ $file->email }}</td>
-                    <td>{{ $file->name }}</td>
+                    <td><a href="#">{{$file->name }}</a></td>
                     <td>{{ $file->created_at}}</td>
 
 

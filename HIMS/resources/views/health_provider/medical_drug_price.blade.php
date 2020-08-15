@@ -131,7 +131,7 @@
                                             <div class="col-md-12">
                                                 <h3 style=" ">
                                                     <i class="fa fa-download"> </i>
-                                                    Generate Reports
+                                                    Medical & Drug Price
                                                 </h3>
                                             </div>
                                         </div>
@@ -143,52 +143,39 @@
                                         <div class="container-fluid" style="background: #ffffff">
                                             <div class="row justify-content-center">
 
-                                                <div class="col-md-12">
 
-                                                    <div class="form-group row" >
-
-                                                        <label for="sel1" class="col-md-4 col-form-label text-md-right">Generate by Year</label>
-
-                                                        <select class="col-md-8" id="sel1">
-                                                          <option>select service......</option>
-                                                          <option>Drugs</option>
-                                                          <option>Medication Services</option>
-                                                          <option>Other Hospital Services</option>
-
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group row" >
-
-                                                        <label for="sel1" class="col-md-4 col-form-label text-md-right">Generate by Specification</label>
-
-                                                        <select class="col-md-8" id="sel1">
-                                                          <option>select service......</option>
-                                                          <option>Drugs</option>
-                                                          <option>Medication Services</option>
-                                                          <option>Other Hospital Services</option>
-
-                                                        </select>
-                                                      </div>
+                                                <a href="{{ route('health_provider.admin.add.service.price') }}"  class="btn btn-success mb-2">Add Medical Service & Drug Price</a>
+                                                  </div>
+                                                </div>
 
 
-                                  <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Report To Generate
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ route('pdfview',['download'=>'pdf']) }}"  class="btn btn-success mb-2">Health Care Staff</a></li>
+                                                <table class="table">
+                                                    <thead>
 
-                                     <li><a href="{{ route('drug_pdf',['download'=>'pdf']) }}"  class="btn btn-success mb-2">Registered Drugs List</a></li>
-                                      <li><a href="#"  class="btn btn-success mb-2">Totol Drug Income</a></li>
-                                      <li><a href="#"  class="btn btn-success mb-2">Drugs Sales income</a></li>
-                                      <li><a href="#"  class="btn btn-success mb-2">Totol Drug Income</a></li>
-                                      <li><a href="#"  class="btn btn-success mb-2">Totol Service Income</a></li>
-                                      <li><a href="#"  class="btn btn-success mb-2">Medical Services & Drug Price</a></li>
+                                                        <tr>
+                                                            <th>S/N</th>
+                                                            <th>Name</th>
+                                                            <th>ID</th>
+                                                            <th>Category</th>
 
-                                    </ul>
-                                  </div>
-                                </div>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
 
 
-                                </body>
-                                </html>
+
+
+                                                        <tr class="table-success">
+                                                        <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                          <td></td>
+
+                                                            </td>
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>

@@ -53,8 +53,21 @@ class HealthCareProviderController extends Controller
              'editMode'=>"none"
          ]);
     }
+//=================================services price(medical and drug)=======================================
+public function ServicePrice( ){
 
+    return view('health_provider.medical_drug_price',[
+         'activeLeftNav'=>"profile",
+         'editMode'=>"none"
+     ]);
+}
+public function addServicePrice( ){
 
+    return view('health_provider.addmedical_drug_price',[
+         'activeLeftNav'=>"profile",
+         'editMode'=>"none"
+     ]);
+}
 //////////////report generate===================
 
 public function generatereport(){

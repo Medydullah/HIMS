@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Drug List REPORT</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,17 +13,15 @@
 
 
 
-            <ul class="nav">
-                <li class="nav-item" style="text-align: center">
-                    <h3 class="left-menu-logo" >
-                        <i class="fa fa-stethoscope dmw-logo"> </i>
-                    </h3>
-                    <h1>  HIMS </h1><br>
-                        <h4>DRUG LIST REPORT</h4>
-                    </a>
-                </li>
 
-            </ul>
+<ul class="nav" style="text-align: center;">
+
+    <h3 style="color: dodgerblue">  HOSPITAL INFORMATION MANAGEMENT SYSTEM <br>(HIMS) </h3>
+    <u> <h4>DRUG LIST REPORT</h4></u>
+    </a>
+</li>
+
+</ul>
 
 
 

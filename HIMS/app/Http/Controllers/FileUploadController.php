@@ -22,7 +22,7 @@ public function createForm(){
 
 public function fileUpload(Request $req){
       $req->validate([
-      'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:10048'
+      'file' => 'required|mimes:ppt,csv,txt,xlx,png,xls,docx,pdf|max:10048'
       ]);
 
       $fileModel = new File;
@@ -30,7 +30,7 @@ public function fileUpload(Request $req){
       if($req->file()) {
           $fileName = time().'_'.$req->file->getClientOriginalName();
           $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
-
+          $fileModel->email = time().'_'.$req->file->getClientOriginalemail();
           $fileModel->name = time().'_'.$req->file->getClientOriginalName();
           $fileModel->file_path = '/storage/' . $filePath;
           $fileModel->save();
