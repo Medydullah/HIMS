@@ -156,17 +156,17 @@
                     </label>
 
                     <div class="col-md-8" >
-                        <input id="employment_id"  class="form-control" name="employment_id"
+                        <input id="employment_id"  class="form-control" name="employement_id"
                             value=" {{ Auth::user()->employment_id }}" >
                     </div>
                 </div>
                 <div class="form-group row" style="">
-                    <label for="employment name" class="col-md-4 col-form-label text-md-right">
+                    <label for="employment_name" class="col-md-4 col-form-label text-md-right">
                         Employment Name
                     </label>
 
                     <div class="col-md-8">
-                        <input id="employment_name" type="text" class="form-control" placeholder=" " name="employment_name"
+                        <input id="employment_name" type="text" class="form-control" placeholder=" " name="employement_name"
                             value="" required>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                         Name</label>
 
                     <div class="col-md-8">
-                        <input id="drug_name" type="text" class="form-control" placeholder=" " name="dname" value="" required
+                        <input id="drug_name" type="text" class="form-control" placeholder=" " name="drug_name" value="" required
                             autofocus>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                         Date</label>
 
                     <div class="col-md-8">
-                        <input id="stock_date" type="date" class="form-control" placeholder=" " name="stock_            ```date" value=""
+                        <input id="stock_date" type="date" class="form-control" placeholder=" " name="stock_date" value=""
                             required autofocus>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input id="" type="text" class="form-control" placeholder="" name="box_no"
+                        <input id="" type="text" class="form-control" placeholder="" name="tablets_no"
                             value="">
                     </div>
                 </div>

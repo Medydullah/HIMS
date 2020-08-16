@@ -274,7 +274,6 @@ Route::get('/system/test', 'SystemAdminController@testMail')->name('system.admin
 
 //=================================PHARMACIST============================================
 //=======================================================================================
-// Route::get('/', 'HealthExpertController@searchUserByToken');
 Route::get('expert/pharmacy/drug', 'HealthExpertController@showDrug')->name('hce.pharmacy');
 
 Route::get('expert/pharmacy/drug/request', 'HealthExpertController@showDrugRequest')->name('hce.pharmacy.request');

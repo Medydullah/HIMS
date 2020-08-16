@@ -16,17 +16,17 @@ class CreateDrugsTable extends Migration
         Schema::create('drugs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('drug_id');
-            $table->integer('drug_name')->nullable();
-            $table->string('price')->nullable();
+            $table->string('drug_name')->nullable();
+            $table->integer('price')->nullable();
              $table->date('expire_date')->nullable();
-            $table->string('box_no')->nullable();
+            $table->intger('box_no')->nullable();
             $table->integer('packet_no')->nullable(); //date
             $table->integer('tablets_no')->nullable();  //date
             $table->string('employment_id')->nullable();
             $table->string('employment_name')->nullable();
             $table->timestamps();
             $table->integer('total_drug')->nullable();  //date
-            $table->string('stock_no')->nullable();
+            $table->integer('stock_no')->nullable();
             $table->date('stock_date')->nullable();
          });
     }

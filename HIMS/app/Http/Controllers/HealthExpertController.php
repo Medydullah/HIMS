@@ -91,15 +91,16 @@ class HealthExpertController extends Controller
             ]);
     }
 public function AddNewDrug(Request $request){
+
  $drugs = new Drug();
- $drugs->employment_id=$request->input('employee_id');
+ $drugs->employment_id=$request->input('employement_id');
  $drugs->stock_no=$request->input('stock_no');
  $drugs->stock_date=$request->input('stock_date');
  $drugs->packet_no=$request->input('packet_no');
  $drugs->box_no=$request->input('box_no');
  $drugs->total_drug=$request->input('tablet_no');
  $drugs->expire_date=$request->input('expire_date');
- $drugs->employment_name=$request->input('employee_name');
+ $drugs->employment_name=$request->input('employement_name');
  $drugs->drug_id=$request->input('drug_id');
  $drugs->drug_name=$request->input('drug_name');
  $drugs->price=$request->input('price');
@@ -149,6 +150,7 @@ public function drugpdfview(Request $request )
 //==============================================END REPORT PDF==================================
     public function showDrug()
     {
+
         $drugs = Drug::all();
         return view('expert.0_drug',['drugs'=>$drugs])->with(
             [
