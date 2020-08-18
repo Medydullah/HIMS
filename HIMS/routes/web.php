@@ -282,6 +282,7 @@ Route::get('expert/pharmacy/add/drug', 'HealthExpertController@addDrugForm')->na
 Route::post('expert/pharmacy/drug/save', 'HealthExpertController@addNewDrug')->name('hce.pharmacy.drug.save');
 
 Route::get('expert/pharmacy/drug/table', 'HealthExpertController@showDrugTable')->name('hce.pharmacy.table');
+Route::get('expert/pharmacy/drug/table/manual/add', 'HealthExpertController@AddDrugTable')->name('hce.pharmacy.table.manual.add');
 
 Route::get('expert/pharmacy/drug/notification', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy.notification');
 

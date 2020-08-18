@@ -265,10 +265,10 @@
                             </div>
 
 
-                                <div class="col-md-8 " style="margin-top: 1em">
+                                <div class="col-md-8 " style="margin-top: 1em; ">
                                     <a class="btn btn-link" href="{{ route('health_provider.registration.form') }}">
                                         Register a health facility/Institute like Hospital,
-                                        Laboratory, Dispensary , Pharmacy etc
+                                        Dispensary, Health Center  etc
                                     </a>
                                 </div>
                         </form>

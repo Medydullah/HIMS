@@ -23,7 +23,7 @@
     <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
 
     <style>
-     
+
         .permission-group{
             border-left: 6px Solid #ddd690;
             padding-top: 0.5em;
@@ -116,19 +116,32 @@
               <div class="content-wrapper" style="background: #f8fafc;">
                                         <div class= "list-wrapper">
 
-                                                
+                                            <ul class="nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ route('hce.pharmacy.table.manual.add') }}">
+                                                        <i class="fa fa-plus"></i>
+                                                        Add drug info
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+
                                                               <table class="table">
                                                                   <thead>
                                                                   <tr>
-                                                                      <th>S/N</th>
-                                                                      <th>Stock No</th>
-                                                                      <th>Stock Date</th>
-                                                                      <th>Name</th>
-                                                                      <th>Total Price</th>
-                                                                      <th>Packets No</th>
-                                                                      <th>Tablets No</th>
-                                                                      <th>Expire Date</th>
-                                                                                                                                                                        </tr>
+                                                                      <th rowspan="3">S/N</th>
+                                                                      <th rowspan="2">Drug ID</th>
+                                                                      <th rowspan="2">Drug Neme</th>
+                                                                      <th rowspan="2">Required Dose</th>
+                                                                      <th rowspan="2">Complete Dose Price</th>
+                                                                      <th  colspan="2">Dose Period</th>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td >For Child </td>
+                                                                    <td>For Adult</td>
+
+                                                                  </tr>                                                                                          </tr>
                                                                   </thead>
                                                                   <tbody>
 

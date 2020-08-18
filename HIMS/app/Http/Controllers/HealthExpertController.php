@@ -216,6 +216,21 @@ public function drugpdfview(Request $request )
             ]);
     }
 
+
+
+    public function AddDrugTable()
+    {
+        return view('expert.addDrug_table')->with(
+            [
+                'activeLeftNav'=>'wallets',
+
+                'activeTab'=>'activeTab',
+                'activeTab'=>'table'
+
+            ]);
+    }
+
+
 /////=============================================upload file================///////////////////////
 public function createForm(){
     return view('expert.file-upload')->with(
