@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+ <!-- Scripts {{ config('app.name', 'Laravel') }} -->
+ <script src="{{ asset('js/app.js') }}" defer></script>
+ <meta charset="utf-8">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
 
@@ -117,7 +122,7 @@
     <a class="navbar-brand" href="{{ route('home') }}">
         <h3 class="system-text-logo" style="text-align: center; display: block">
             <i class="fa fa-stethoscope logo"> </i>
-            HIMS :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            HIMS :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </h3>
     </a>
 </nav>
@@ -246,23 +251,32 @@
                                 <!--2.1 Region -->
                                 <div class="form-group row">
                                     <label for="region" class="col-md-4 col-form-label text-md-right">Region</label>
-
                                     <div class="col-md-6">
-                                        <input id="region" type="text" class="form-control"
-                                               name="region" value="" required autofocus>
+                                        <select name="region">
+                                           @foreach ($regions as $region)
+                                        <option  value="{{$region->id}}">{{$region->name}}</option>
+
+                                           @endforeach
+                                        </select>
 
                                     </div>
                                 </div>
 
-                                <!--2.2 District -->
+                                <!--2.2 Distric-->
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">District</label>
 
-                                    <div class="col-md-6">
-                                        <input id="district" type="text"
-                                               class="form-control" name="district" value=""
-                                               required autofocus>
-                                    </div>
+                                    <select id="distict-selector" name="district">
+                                        @foreach ($region->districts as $district)
+                                        @if ($region->name=='Arusha')
+                                        <option  value="{{$district->name}}">{{$district->name}}</option>
+
+
+                                        @endif
+                                        @endforeach
+                                     </select>
+
+                                 </div>
                                 </div>
 
                                 <!--2.3 Ward -->
@@ -392,6 +406,47 @@
 </div>
 
 </body>
+<script>
+    $(document).ready(function () {
+
+$('select[name="region"').on('change',function (){
+        var regionId = $(this).val()
+
+
+        var regions = @json($regions)
+
+
+        regions.forEach((region)=>{
+            if(region.id == regionId ){
+                var districts = region.districts
+
+
+                var districtSelector = document.getElementById("distict-selector");
+                console.log(districts);
+                $("#distict-selector").empty();
+                for(const [i,district] in districts)
+{
+
+   var opt = document.createElement("option");
+   opt.value= districts[i].id;
+   opt.innerHTML = districts[i]['name']; // whatever property it has
+
+   // then append it to the select element
+   districtSelector.appendChild(opt);
+
+}
+            }
+
+
+        })
+
+
+
+    })
+    })
+
+
+    </script>
 </html>
 
 

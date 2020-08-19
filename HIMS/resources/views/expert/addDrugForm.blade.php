@@ -116,9 +116,12 @@
         @include('expert.components.drug_top_nav')
         <!-- ==================add menu ====================================== -->
 
+
         <!-- New Employee -->
         <form method="post" action="{{route('hce.pharmacy.drug.save')}}">
          @csrf
+
+
 
             <input name="active_tab" type="hidden" value="">
             <input name="expert_id" type="hidden" value="">
@@ -139,6 +142,18 @@
                 </div>
                 <!-- ========== =================== Add NEw Drug Form================================== -->
                 <div class="section-divider" style="margin-top: 1em">
+
+                    <div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <!--1.3 Employment ID -->
 <div class="section-divider" style="margin-top: 1em">

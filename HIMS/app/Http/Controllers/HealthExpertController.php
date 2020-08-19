@@ -31,6 +31,12 @@ use Illuminate\Support\Facades\Hash;
 use App\drugs;
 use App\Incomes;
 use App\File;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\DrugsImport;
+use App\Exports\DrugsExport;
+use App\RequestDrug;
+use App\DrugTable;
+
 
 class HealthExpertController extends Controller
 {
@@ -77,6 +83,31 @@ class HealthExpertController extends Controller
 //-----------------------------------------------------------------------------------------------------
 //----------------------------      drugs    ----------------------------------------------------------
 
+//============import using exel========================
+
+public function fileImportExport()
+    {
+       return view('file-import');
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileImport(Request $request)
+    {
+        Excel::import(new DrugsImport, $request->file('file')->store('temp'));
+        return back();
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileExport()
+    {
+        return Excel::download(new DrugsExport, 'drugs-collection.xlsx');
+    }
+
+    //======================end import/export file=====
 
     //---------------[[ Provider Drugs Detail]]--------------------
 
@@ -91,7 +122,25 @@ class HealthExpertController extends Controller
             ]);
     }
 public function AddNewDrug(Request $request){
+    $request->validate([
+        'employment_id' => 'max:169',
+        'employement_name' => 'max:169',
+        'stock_no' => 'max:28',
 
+        'stock_date' => 'required|max:169',
+
+        'packet_no' => 'required|max:169',
+        'tablets_no' => 'required|max:169',
+        'box_no' => 'required|max:169',
+        'expire_date' => 'required|max:169',
+        'drug_id' => 'required|max:28',
+
+        'drug_name' => 'required|max:169',
+
+        'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+
+
+    ]);
  $drugs = new Drug();
  $drugs->employment_id=$request->input('employement_id');
  $drugs->stock_no=$request->input('stock_no');
@@ -117,7 +166,74 @@ return redirect('/expert/pharmacy/drug')->with(
             ]);
 
 }
+//===========================request drug========================
+public function RequestDrug(Request $request){
+    $request->validate([
+        'staff_id' => 'max:169',
+        'email' => 'max:169',
+        'quantity' => 'required|numeric|min:1',
 
+        'drug_name' => 'required|max:169',
+        'date' => 'required|max:169',
+        'drug_id' => 'required|max:169',
+        'category' => 'required|max:169',
+
+
+    ]);
+ $drugs = new RequestDrug();
+  $drugs->category=$request->input('category');
+ $drugs->quantity=$request->input('quantity');
+ $drugs->date=$request->input('date');
+ $drugs->drug_id=$request->input('drug_id');
+ $drugs->drug_name=$request->input('drug_name');
+
+ $drugs->save();
+
+return redirect('/expert/pharmacy/drug')->with(
+            [
+                'activeLeftNav'=>'wallets',
+                'editMode'=>'none',
+                'accessToken'=>" ",
+                'activeTab'=>'activeTab',
+                'activeTab'=>'drugs',
+            ]);
+
+}
+//=======================================================drug table=======================//
+public function AddDataDrugTable(Request $request){
+    $request->validate([
+        'adult_dose' => 'required|min:1',
+        'child_dose' => 'required|min:1',
+
+        'drug_name' => 'required|max:169',
+        'required_child' => 'required|max:169',
+        'drug_id' => 'required|max:169',
+        'required_adult' => 'required|max:169',
+        'price' => 'required|max:169',
+
+
+    ]);
+ $drugtables = new DrugTable();
+ $drugtables->adult_dose=$request->input('adult_dose');
+ $drugtables->child_dose=$request->input('child_dose');
+ $drugtables->required_child=$request->input('required_child');
+ $drugtables->required_adult=$request->input('required_adult');
+ $drugtables->price=$request->input('price');
+ $drugtables->drug_id=$request->input('drug_id');
+ $drugtables->drug_name=$request->input('drug_name');
+
+ $drugtables->save();
+
+return redirect('/expert/pharmacy/drug/table')->with(
+            [
+                'activeLeftNav'=>'wallets',
+                'editMode'=>'none',
+                'accessToken'=>" ",
+                'activeTab'=>'activeTab',
+                'activeTab'=>'drugs',
+            ]);
+
+}
 //=======================================GENERATE PDF RESULT=================================================
 
 
@@ -164,9 +280,9 @@ public function drugpdfview(Request $request )
             ]);
     }
 
-    public function showIncome($active_tab)
+    public function showPharmacyGenerateReport($active_tab)
     {
-                return view('expert.0_stock_income')->with(
+                return view('expert.Pharmacist_generateReport')->with(
             [
                 'activeLeftNav'=>'wallets',
                 // 'activeWalletTab'=>'visit',

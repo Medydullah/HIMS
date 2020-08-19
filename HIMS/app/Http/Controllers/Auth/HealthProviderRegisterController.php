@@ -6,6 +6,7 @@ use App\Events\HealthCareProviderRegistered;
 use App\HealthCareProvider;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -68,8 +69,15 @@ class HealthProviderRegisterController extends Controller
     }
 
 
+
+
     public function showRegistrationForm(){
-        return view('health_provider.auth.registration');
+        $regions = Region::all();
+        foreach($regions as $region)
+        $region->districts;
+
+
+        return view('health_provider.auth.registration', ['regions'=>$regions]);
     }
 
 
@@ -80,8 +88,8 @@ class HealthProviderRegisterController extends Controller
             'facility_name' => 'required|max:169',
             'facility_type' => 'required|max:169',
 
-            'phone_1' => 'required|max:169',
-            'phone_2' => 'required|max:169',
+            'phone_1' => 'required|regex:/(0)[0-9]{9}/|max:169',
+            'phone_2' => 'regex:/(0)[0-9]{9}/',
 
             'region' => 'required|max:169',
             'district' => 'required|max:169',

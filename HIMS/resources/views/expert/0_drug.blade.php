@@ -111,7 +111,35 @@
         @include('expert.components.drug_top_nav')
         <!-- ==================add menu ====================================== -->
         <div>
+            <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
+                    <div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <h4>
+                            <i class="fa fa-plus"> </i>
+                            Add Drug using Excell file
+
+                        </h4>
+                <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
+                    <div class="custom-file text-left">
+                        <input type="file" name="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Import data</button>
+                <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
+            </form>
+
+<br><br>
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('hce.pharmacy.add.drug.form') }}">
@@ -134,10 +162,10 @@
                     <th>S/N</th>
                     <th>Stock No</th>
                     <th>Stock Date</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Total Price</th>
                     <th>Packets No</th>
-                    <th>Tablets No</th>
                     <th>Expire Date</th>
                 </tr>
             </thead>

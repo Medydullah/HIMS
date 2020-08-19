@@ -115,11 +115,11 @@
         <div class="container-fluid">
             <div class="row">
 
-                @include('health_provider.components.left-nav')
+                @include('expert.components.left-nav')
 
                 <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
-                    @include('health_provider.components.top_nav')
+                    @include('expert.components.top_nav')
                    <div class="container">
                     <main class="py-4">
                         <div class="row justify-content-center">
@@ -131,7 +131,7 @@
                                             <div class="col-md-12">
                                                 <h3 style=" ">
                                                     <i class="fa fa-download"> </i>
-                                                    Medical & Drug Price
+                                                    Generate Reports
                                                 </h3>
                                             </div>
                                         </div>
@@ -143,26 +143,51 @@
                                         <div class="container-fluid" style="background: #ffffff">
                                             <div class="row justify-content-center">
 
+                                                <div class="col-md-12">
 
-                                                <a href="{{ route('health_provider.admin.add.service.price') }}"  class="btn btn-success mb-2">Add Medical Service & Drug Price</a>
-                                                  </div>
-                                                </div>
+                                                    <div class="form-group row" >
+
+                                                        <label for="sel1" class="col-md-4 col-form-label text-md-right">Generate by Year</label>
+
+                                                        <select class="col-md-8" id="sel1">
+                                                          <option>select service......</option>
+                                                          <option>Drugs</option>
+                                                          <option>Medication Services</option>
+                                                          <option>Other Hospital Services</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group row" >
+
+                                                        <label for="sel1" class="col-md-4 col-form-label text-md-right">Generate by Specification</label>
+
+                                                        <select class="col-md-8" id="sel1">
+                                                          <option>select service......</option>
+                                                          <option>Drugs</option>
+                                                          <option>Medication Services</option>
+                                                          <option>Other Hospital Services</option>
+
+                                                        </select>
+                                                      </div>
 
 
-                                                <table class="table">
-                                                    <thead>
+                                  <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Report To Generate
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
 
-                                                        <tr>
-                                                            <th>S/N</th>
-                                                            <th>Name</th>
-                                                            <th>ID</th>
-                                                            <th>Category</th>
+                                     <li><a href="{{ route('drug_pdf',['download'=>'pdf']) }}"  class="btn btn-success mb-2">Registered Drugs List</a></li>
+                                      <li><a href="#"  class="btn btn-success mb-2">Totol Drug Income</a></li>
+                                      <li><a href="#"  class="btn btn-success mb-2">Drugs Sales income</a></li>
+                                      <li><a href="#"  class="btn btn-success mb-2">Totol Drug Income</a></li>
+                                      <li><a href="#"  class="btn btn-success mb-2">Totol Service Income</a></li>
+                                      <li><a href="#"  class="btn btn-success mb-2">Medical Services & Drug Price</a></li>
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                    </ul>
+                                  </div>
+                                </div>
 
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                </body>
+                                </html>

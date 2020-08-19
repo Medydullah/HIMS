@@ -286,7 +286,7 @@ Route::get('expert/pharmacy/drug/table/manual/add', 'HealthExpertController@AddD
 
 Route::get('expert/pharmacy/drug/notification', 'HealthExpertController@showDrugNotification')->name('hce.pharmacy.notification');
 
-Route::get('expert/stock/{active_tab?}', 'HealthExpertController@showIncome')->name('hce.income');
+Route::get('expert/stock/{active_tab?}', 'HealthExpertController@showpharmacyGenerateReport')->name('hce.income');
 
 
 // Create file upload form
@@ -307,6 +307,22 @@ Route::get('health/provider/uploaded/report', 'HealthCareProviderController@show
 Route::get('admin/generate/report', 'HealthCareProviderController@generatereport')->name('health_provider.staff.generate');
 
 
+//=============================current patient ===============================================================================
+Route::get('/expert/admin/current/patient', 'HealthCareProviderController@showstaffTodayServiceForms')->name('expert.admin.service_forms');
+
+
 //=====================================medical  and drug price in admin ==============================
 Route::get('health/provider/service/price', 'HealthCareProviderController@ServicePrice')->name('health_provider.admin.service.price');
 Route::get('health/provider/add/service/price', 'HealthCareProviderController@addServicePrice')->name('health_provider.admin.add.service.price');
+Route::post('health/provider/save/service/price', 'HealthCareProviderController@AddNewServicedetail')->name('health_provider.admin.save.service.price');
+
+
+//=====================import/export file===============================================
+
+Route::get('file-import-export', 'HealthExpertController@fileImportExport');
+Route::post('file-import', 'HealthExpertController@fileImport')->name('file-import');
+Route::get('file-export', 'HealthExpertController@fileExport')->name('file-export');
+
+//==============request drug===============================
+Route::post('expert/pharmacy/drug/request', 'HealthExpertController@RequestDrug')->name('hce.pharmacy.drug.request');
+Route::post('expert/pharmacy/save/drug/table/data', 'HealthExpertController@AddDataDrugTable')->name('hce.pharmacy.save.drug.table.data');

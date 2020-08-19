@@ -213,6 +213,19 @@
 
               @include('expert.components.drug_top_nav')
               <div class="dashed-form">
+                <form method="post" action="{{route('hce.pharmacy.drug.request')}}">
+                    @csrf
+                    <div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
 
                                                                  <!-- form heading -->
                                                                 <h4>
@@ -242,7 +255,7 @@
                                                                            class="form-control"
                                                                            id="ethnicity"
                                                                            value=" {{  Auth::user()->health_provider_id  }}"
-                                                                           name="ethnicity">
+                                                                           name="user_id">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row form-input-row">
@@ -253,7 +266,7 @@
                                                                            class="form-control"
                                                                            id="ethnicity"
                                                                            value=" {{  Auth::user()->email  }}"
-                                                                           name="ethnicity">
+                                                                           name="email">
                                                                     </div>
                                                                 </div>
                                                                 </div>
@@ -262,7 +275,7 @@
                                                                     <div class=" col-md-8">
                                                                     <input type="text" class="form-control" id="occupation"
                                                                            value=""
-                                                                           name="occupation">
+                                                                           name="drug_id">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row form-input-row">
@@ -270,7 +283,7 @@
                                                                     <div class=" col-md-8">
                                                                     <input type="text" class="form-control" id="occupation"
                                                                            value=""
-                                                                           name="occupation">
+                                                                           name="drug_name">
                                                                     </div>
                                                                 </div>
 
@@ -289,7 +302,7 @@
                                                                     <div class=" col-md-8">
                                                                     <input type="text" class="form-control " id="tribe"
                                                                            value=""
-                                                                           name="tribe">
+                                                                           name="category">
                                                                     </div>
                                                                 </div>
 
@@ -299,7 +312,7 @@
                                                                     <div class=" col-md-8">
                                                                     <input type="text" class="form-control" id="occupation"
                                                                            value=""
-                                                                           name="occupation">
+                                                                           name="quantity">
                                                                     </div>
                                                                 </div>
 

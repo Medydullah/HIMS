@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
 
-                                    <form method="post" action="{{route('hce.pharmacy.drug.save')}}">
+                                    <form method="post" action="{{route('health_provider.admin.save.service.price')}}">
                                         @csrf
 
                                            <input name="active_tab" type="hidden" value="">
@@ -163,6 +163,18 @@
                                                </div>
                                                <!--1.3 Employment ID -->
                                <div class="section-divider" style="margin-top: 1em">
+
+                                <div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </div>
                                                </div>
 
                                                <div class="section-heading">
@@ -178,16 +190,16 @@
                                                        Name</label>
 
                                                    <div class="col-md-8">
-                                                       <input id="drug_name" type="text" class="form-control" placeholder=" " name="dname" value="" required
+                                                       <input id="name" type="text" class="form-control" placeholder=" " name="service_name" value="" required
                                                            autofocus>
                                                    </div>
                                                </div>
                                                <div class="form-group row">
-                                                   <label for="drug id" class="col-md-4 col-form-label text-md-right">
+                                                   <label for=" id" class="col-md-4 col-form-label text-md-right">
                                                       ID</label>
 
                                                    <div class="col-md-8">
-                                                       <input id="drug_id" type="text" class="form-control" placeholder=" " name="drug_id" value="" required
+                                                       <input id="id" type="text" class="form-control" placeholder=" " name="service_id" value="" required
                                                            autofocus>
                                                    </div>
                                                </div>
@@ -196,11 +208,11 @@
 
                                                 <label for="sel1" class="col-md-4 col-form-label text-md-right">Select category</label>
 
-                                                <select class="col-md-8" id="sel1">
-                                                  <option>select service......</option>
-                                                  <option>Drugs</option>
-                                                  <option>Medication Services</option>
-                                                  <option>Other Hospital Services</option>
+                                                <select class="col-md-8" id="sel1" name="category">
+                                                  <option name="category">select service......</option>
+                                                  <option name="category">Drugs</option>
+                                                  <option name="category">Medication Services</option>
+                                                  <option name="category">Other Hospital Services</option>
 
                                                 </select>
                                               </div>

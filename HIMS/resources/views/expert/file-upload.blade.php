@@ -120,9 +120,14 @@
                 <body style="background:  #e6ecf0">
 
 <div id="app">
+    <div class="container-fluid">
+        <div class="row">
 
-              @include('expert.components.stock_income_top_nav')
+            @include('expert.components.left-nav')
 
+            <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
+
+                @include('expert.components.top_nav')
 
                         <div class="container">
 
@@ -167,16 +172,7 @@
                                 </div>
                             </main>
                         </div>
-                        <footer id="footer" class="bg-dark"
-                            style="width:100%; float:right;color:white; margin-top:80px;">
-                            <div class="py-2 text-center">
-                                <p> &copyright HIMS <span id="year"></span>
-                                    <script>
-                                    document.write(new Date().getFullYear());
-                                    </script>, All rights reserved
-                                </p>
-                            </div>
-                        </footer>
+
                     </div>
                 </div>
 

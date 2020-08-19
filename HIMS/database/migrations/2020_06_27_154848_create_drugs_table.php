@@ -19,7 +19,7 @@ class CreateDrugsTable extends Migration
             $table->string('drug_name')->nullable();
             $table->integer('price')->nullable();
              $table->date('expire_date')->nullable();
-            $table->intger('box_no')->nullable();
+            $table->integer('box_no')->nullable();
             $table->integer('packet_no')->nullable(); //date
             $table->integer('tablets_no')->nullable();  //date
             $table->string('employment_id')->nullable();

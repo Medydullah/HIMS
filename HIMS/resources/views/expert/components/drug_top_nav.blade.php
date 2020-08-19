@@ -69,7 +69,7 @@
                                                             <li class="nav-item">
                                                                 <a class="nav-link "
                                                                     href=" {{ route('hce.pharmacy.notification') }}">
-                                                                    <i class="fa fa-message"> </i>
+                                                                    <i class="fa fa-bell"> </i>
                                                                     Notification
                                                                 </a>
                                                             </li>

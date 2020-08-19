@@ -117,14 +117,24 @@
         <!-- ==================add menu ====================================== -->
 
         <!-- New Employee -->
-        <form method="post" action="{{route('hce.pharmacy.drug.save')}}">
+        <form method="post" action="{{route('hce.pharmacy.save.drug.table.data')}}">
          @csrf
 
             <input name="active_tab" type="hidden" value="">
             <input name="expert_id" type="hidden" value="">
 
             <div class="card col-md-10 offset-1 new-employee-wrapper">
-
+                <div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <div>
                     <h4>
                         <i class="fa fa-user-plus"> </i>
@@ -192,13 +202,30 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="price" class="col-md-4 col-form-label text-md-right">Required Adult Dose</label>
+
+                    <div class="col-md-8">
+                        <input id="price" type="text" class="form-control" placeholder=" " name="required_adult" value="" required
+                            autofocus>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="price" class="col-md-4 col-form-label text-md-right">Required Child Dose</label>
+
+                    <div class="col-md-8">
+                        <input id="price" type="text" class="form-control" placeholder=" " name="required_child" value="" required
+                            autofocus>
+                    </div>
+                </div>
+
                 <div class="form-group row" >
                     <label for="expire date" class="col-md-4 col-form-label text-md-right">
                        Child Dose
                     </label>
 
                     <div class="col-md-8">
-                        <input id="employment_id" type="type" class="form-control" placeholder=" " name="expire_date"
+                        <input id="employment_id" type="type" class="form-control" placeholder=" " name="child_dose"
                             value="" required>
                     </div>
                 </div>
@@ -206,7 +233,7 @@
                     <label for="stock no" class="col-md-4 col-form-label text-md-right">Adult Dose</label>
 
                     <div class="col-md-8">
-                        <input  type="text" class="form-control" placeholder="" name="stock_no" value=""
+                        <input  type="text" class="form-control" placeholder="" name="adult_dose" value=""
                             required autofocus>
                     </div>
                 </div>

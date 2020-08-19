@@ -73,7 +73,7 @@
 
                                                       <li class="nav-item">
                                                           <a class="nav-link {{ $activeTab=='upload'? 'active' : ' ' }} "
-                                                             href="{{ route('pharmacist.upload.file') }}">
+                                                             href="">
                                                               <i class="fa fa-message"> </i>
                                                               Upload Report
                                                           </a>

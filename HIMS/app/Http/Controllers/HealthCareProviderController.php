@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\File;
+use App\MedicalDrugPrice;
+
 
 class HealthCareProviderController extends Controller
 {
@@ -129,7 +131,26 @@ public function drugpdfview(Request $request )
 
 //==============================================end pdf======================================
 
+//========================================================service price(drug and medical)
 
+
+public function AddNewServicedetail(Request $request){
+
+    $medical_drug_prices = new MedicalDrugPrice();
+    $medical_drug_prices->service_id=$request->input('service_id');
+    $medical_drug_prices->service_name=$request->input('service_name');
+    $medical_drug_prices->category=$request->input('category');
+    $medical_drug_prices->price=$request->input('price');
+
+    $medical_drug_prices->save();
+
+   return redirect('/health/provider/service/price')->with(
+               [
+                'activeLeftNav'=>"service-forms",
+                'editMode'=>"none",
+               ]);
+
+   }
 //=======================================get uploded Report=====================================
 
 public function showUploadedReport()
@@ -181,7 +202,7 @@ public function showUploadedReport()
         $request->validate([
             'name' => 'required|max:169',
             'email' => 'required|unique:health_care_employees|max:169',
-            'phone' => 'required|max:28',
+            'phone' => 'required|regex:/(0)[0-9]{9}/|max:28',
 
             'employment_id' => 'required|max:169',
 
@@ -316,6 +337,26 @@ public function showUploadedReport()
     }
 
 
+
+
+
+
+//==========================current patient=====================================================
+  //---------------[[Reports | Service Forms]]--------------------
+  public function showstaffTodayServiceForms(){
+
+    return view('expert.current_Patient',[
+        'activeLeftNav'=>'wallets',
+        // 'activeWalletTab'=>'visit',
+        'editMode'=>'none',
+        'accessToken'=>" ",
+        'activeTab'=>'activeTab',
+        'activeDate'=>$this->getRecentDates()->first,
+        'visits'=>$this->getVisitsByDate(Carbon::today()->toDateTimeString()),
+        'recentDates'=> $this->getRecentDates(),
+        'editMode'=>"none",
+     ]);
+}
 
 
 

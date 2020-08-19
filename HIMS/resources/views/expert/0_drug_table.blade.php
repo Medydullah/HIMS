@@ -135,7 +135,7 @@
                                                                       <th rowspan="2">Drug Neme</th>
                                                                       <th rowspan="2">Required Dose</th>
                                                                       <th rowspan="2">Complete Dose Price</th>
-                                                                      <th  colspan="2">Dose Period</th>
+                                                                      <th  colspan="2">Dose Per Day</th>
                                                                   </tr>
                                                                   <tr>
                                                                     <td >For Child </td>
